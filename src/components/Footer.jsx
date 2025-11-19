@@ -12,8 +12,8 @@ const Footer = () => {
 
                 <div className="flex items-center gap-6">
                     <a href="https://x.com/Ibra7ima3dm?t=SssRxV1yVrnRPB2rSThGcg&s=09" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Twitter</a>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
+                    <a href="https://github.com/Ibra7hi" className="text-sm text-muted-foreground hover:text-foreground transition-colors">GitHub</a>
+                    <a href="https://www.linkedin.com/in/ibrahim-adam-a50381363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="text-sm text-muted-foreground hover:text-foreground transition-colors">LinkedIn</a>
                 </div>
             </div>
         </footer>
