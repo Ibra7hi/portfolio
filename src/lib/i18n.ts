@@ -113,6 +113,8 @@ export const translations: Record<Language, Record<string, string>> = {
         'ai.prompt.title': 'Rapid Development',
         'ai.prompt.desc': 'Build complex UIs in seconds using advanced prompt engineering and AI code generation.',
         'ai.prompt.input': 'Create a modern dashboard with dark mode',
+        'ai.automation.title': 'AI Workflow Automation',
+        'ai.automation.desc': 'Deep, precise data flow & seamless system integrations (n8n architecture).',
 
         // Services
         'services.badge': 'Expertise & Tools',
@@ -240,6 +242,8 @@ export const translations: Record<Language, Record<string, string>> = {
         'ai.prompt.title': 'تطوير سريع',
         'ai.prompt.desc': 'بناء واجهات مستخدم معقدة في ثوانٍ باستخدام هندسة الأوامر المتقدمة وتوليد الكود بالذكاء الاصطناعي.',
         'ai.prompt.input': 'أنشئ لوحة تحكم عصرية بوضع ليلي',
+        'ai.automation.title': 'أتمتة سير عمل الذكاء الاصطناعي',
+        'ai.automation.desc': 'تدفق بيانات دقيق وعميق وتكامل أنظمة سلس (بنية n8n).',
 
         // Services
         'services.badge': 'الخبرات والأدوات',

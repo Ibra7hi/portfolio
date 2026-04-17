@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageProvider';
 import SpotlightCard from './SpotlightCard';
-import { Sparkles, LayoutPanelTop, Server, Code, Bot, Settings, Smartphone, Globe, Code2, Database } from 'lucide-react';
+import { Sparkles, LayoutPanelTop, Server, Code, Bot, Settings, Smartphone, Globe, Code2, Database, Workflow, Zap, Send, Cpu } from 'lucide-react';
 
 export default function ServicesBento() {
     const { t } = useLanguage();
@@ -241,6 +241,69 @@ export default function ServicesBento() {
                                 {toolBadge("FastAPI / Python", <Code2 size={12}/>, 0.4)}
                                 {toolBadge("PostgreSQL / Redis", <Database size={12}/>, 0.5)}
                                 {toolBadge("Prisma ORM", <Database size={12}/>, 0.6)}
+                            </div>
+                        </div>
+                    </SpotlightCard>
+                </motion.div>
+
+                {/* --- AI Workflow Automation (n8n) (Simple & Static) --- */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.45 }}
+                    className="md:col-span-12"
+                >
+                    <SpotlightCard
+                        className="p-8 md:p-10 h-full flex flex-col justify-between relative overflow-hidden group rounded-[2rem]"
+                        spotlightColor="rgba(16, 185, 129, 0.15)"
+                        style={{
+                            background: 'var(--surface)',
+                            backdropFilter: 'blur(20px)',
+                            border: '1px solid var(--border)',
+                            boxShadow: 'var(--shadow-md)',
+                        }}
+                    >
+                        <div className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] bg-emerald-500/10 pointer-events-none z-0" />
+                        
+                        <div className="flex flex-col lg:flex-row gap-10 relative z-10 w-full h-full justify-between items-start lg:items-center">
+                            <div className="lg:max-w-md">
+                                <div className="flex gap-3 mb-6">
+                                    <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 w-max">
+                                        <Workflow size={24} className="text-emerald-400" />
+                                    </div>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-3" style={{ color: 'var(--text-primary)' }}>
+                                    {t?.('ai.automation.title') || "AI Workflow Automation"}
+                                </h3>
+                                <p className="text-body" style={{ color: 'var(--text-secondary)' }}>
+                                    {t?.('ai.automation.desc') || "Deep, precise data flow & seamless system integrations via n8n and advanced AI pipelines."}
+                                </p>
+                            </div>
+                            
+                            <div className="flex-1 w-full overflow-x-auto pb-2 lg:pb-0">
+                                <div className="min-w-[480px] w-full mt-4 lg:mt-0">
+                                    <h4 className="text-xs uppercase tracking-wider mb-4 font-semibold" style={{ color: 'var(--text-muted)' }}>Workflow Architecture</h4>
+                                    <div className="flex gap-3 w-full">
+                                        {[
+                                            { icon: Zap, label: 'Trigger Event', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' },
+                                            { icon: Code2, label: 'Process Data', bg: 'bg-blue-500/10 text-blue-400 border-blue-500/20' },
+                                            { icon: Cpu, label: 'DeepSeek LLM', bg: 'bg-purple-500/10 text-purple-400 border-purple-500/20' },
+                                            { icon: Send, label: 'Action Deploy', bg: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20' },
+                                        ].map((node, i, arr) => (
+                                            <div key={node.label} className="flex-1 relative flex flex-col items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-xl">
+                                                <div className={`p-2.5 rounded-xl ${node.bg} border shrink-0 z-10 relative bg-black/40 backdrop-blur-sm`}>
+                                                    <node.icon size={20} />
+                                                </div>
+                                                <span className="text-xs font-semibold tracking-wide" style={{ color: 'var(--text-primary)' }}>{node.label}</span>
+                                                
+                                                {/* Connecting line between squares */}
+                                                {i < arr.length - 1 && (
+                                                    <div className="absolute top-[34px] -right-[18px] w-8 h-px bg-white/10 z-0"></div>
+                                                )}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </SpotlightCard>

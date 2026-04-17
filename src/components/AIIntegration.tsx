@@ -14,7 +14,9 @@ import {
     Zap,
     ArrowRight,
     Terminal,
-    Layout
+    Layout,
+    Database,
+    Send
 } from 'lucide-react';
 
 // Platform data
@@ -617,6 +619,120 @@ export default function AIIntegration() {
 
                                 {/* Interactive Glossy Overlay */}
                                 <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
+                            </div>
+                        </div>
+                    </SpotlightCard>
+                </motion.div>
+
+                {/* Card 5: n8n Automation Grid */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className="md:col-span-2 lg:col-span-3"
+                >
+                    <SpotlightCard
+                        className="liquid-glass p-8 flex flex-col relative overflow-hidden"
+                        spotlightColor="rgba(16, 185, 129, 0.15)"
+                    >
+                        <div className="flex items-start justify-between mb-8">
+                            <div className="flex items-center gap-4">
+                                <div
+                                    className="p-3 rounded-2xl relative"
+                                    style={{
+                                        background: 'rgba(16, 185, 129, 0.15)',
+                                        border: '1px solid rgba(16, 185, 129, 0.25)',
+                                    }}
+                                >
+                                    <Workflow size={28} style={{ color: '#10b981' }} />
+                                </div>
+                                <div>
+                                    <h3 className="text-title mb-1" style={{ color: 'var(--text-primary)' }}>
+                                        {t?.('ai.automation.title') || 'AI Workflow Automation'}
+                                    </h3>
+                                    <p className="text-body text-sm" style={{ color: 'var(--text-secondary)' }}>
+                                        {t?.('ai.automation.desc') || 'Deep, precise data flow & seamless system integrations (n8n architecture).'}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Interactive Workflow Node Area */}
+                        <div 
+                            className="relative w-full rounded-2xl p-8 min-h-[300px] flex items-center justify-center overflow-x-auto"
+                            style={{
+                                background: 'var(--surface-hover)',
+                                border: '1px solid var(--border)',
+                                boxShadow: 'inset 0 4px 20px rgba(0,0,0,0.2)'
+                            }}
+                        >
+                            <div className="relative flex items-center justify-between w-full max-w-4xl min-w-[700px] mx-auto z-10 px-4 mt-4">
+                                {/* SVG Line Background */}
+                                <div className="absolute left-[8%] right-[8%] top-[30px] h-[2px]" style={{ background: 'var(--border)' }} />
+                                
+                                {/* Animated Flow Line Container */}
+                                <div className="absolute left-[8%] right-[8%] top-[30px] h-[2px] overflow-hidden">
+                                    <motion.div 
+                                        className="w-[300%] h-full"
+                                        style={{
+                                            background: 'linear-gradient(90deg, transparent 0%, transparent 45%, rgba(6, 182, 212, 1) 50%, transparent 55%, transparent 100%)',
+                                        }}
+                                        animate={{ x: ['-66%', '0%'] }}
+                                        transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
+                                    />
+                                </div>
+
+                                {[
+                                    { id: 'trigger', icon: Zap, label: 'Webhook', color: '#10b981', desc: 'Trigger Event' },
+                                    { id: 'extract', icon: Database, label: 'Process Data', color: '#3b82f6', desc: 'Transform' },
+                                    { id: 'ai', icon: Cpu, label: 'DeepSeek LLM', color: '#8b5cf6', desc: 'AI Analysis' },
+                                    { id: 'action', icon: Send, label: 'Action', color: '#06b6d4', desc: 'Slack / DB' },
+                                ].map((node, index, arr) => (
+                                    <div key={node.id} className="relative z-10 flex flex-col items-center gap-4 group">
+                                         {/* Node UI */}
+                                         <motion.div 
+                                            className="w-16 h-16 rounded-3xl flex items-center justify-center relative bg-surface border"
+                                            style={{ borderColor: `${node.color}40`, boxShadow: `0 8px 32px ${node.color}15` }}
+                                            whileHover={{ scale: 1.1, borderColor: node.color, boxShadow: `0 8px 32px ${node.color}40` }}
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 0.6 + index * 0.15 }}
+                                         >
+                                             {/* Ping animation behind */}
+                                             <motion.div 
+                                                 className="absolute inset-0 rounded-3xl"
+                                                 style={{ background: node.color }}
+                                                 animate={{ opacity: [0.1, 0.4, 0.1], scale: [1, 1.3, 1] }}
+                                                 transition={{ duration: 2, repeat: Infinity, delay: index * 0.4 }}
+                                             />
+                                             <node.icon size={26} style={{ color: node.color }} className="relative z-10" />
+                                             
+                                             {/* Connection points */}
+                                             {index < arr.length - 1 && (
+                                                 <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-surface border-2 flex items-center justify-center z-20" style={{ borderColor: node.color }}>
+                                                     <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: node.color }} />
+                                                 </div>
+                                             )}
+                                             {index > 0 && (
+                                                 <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-surface border-2 flex items-center justify-center z-20" style={{ borderColor: node.color }}>
+                                                     <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: node.color }} />
+                                                 </div>
+                                             )}
+                                         </motion.div>
+                                         <motion.div 
+                                            className="text-center"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 0.8 + index * 0.15 }}
+                                         >
+                                             <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>{node.label}</p>
+                                             <p className="text-[11px] font-medium mt-1 uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>{node.desc}</p>
+                                         </motion.div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </SpotlightCard>

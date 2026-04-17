@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from './LanguageProvider';
 import SpotlightCard from './SpotlightCard';
-import { SiNextdotjs, SiFastapi, SiExpress, SiPostgresql, SiReact, SiDocker, SiPrisma } from "react-icons/si";
+import { SiNextdotjs, SiFastapi, SiExpress, SiPostgresql, SiReact, SiDocker, SiPrisma, SiSqlalchemy } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa";
 import {
     Layers,
@@ -198,20 +198,31 @@ export default function TechStack() {
 
                         <div className="relative z-10 flex flex-col h-full">
                             <div className="flex items-start justify-between mb-6">
-                                <div
-                                    className="p-3 rounded-2xl"
-                                    style={{
-                                        background: 'rgba(16, 185, 129, 0.12)',
-                                        border: '1px solid rgba(16, 185, 129, 0.2)',
-                                    }}
-                                >
-                                    <SiFastapi size={28} style={{ color: '#10b981' }} />
+                                <div className="flex gap-3 mb-6">
+                                    <div
+                                        className="p-3 rounded-2xl"
+                                        style={{
+                                            background: 'rgba(16, 185, 129, 0.12)',
+                                            border: '1px solid rgba(16, 185, 129, 0.2)',
+                                        }}
+                                    >
+                                        <SiFastapi size={28} style={{ color: '#10b981' }} />
+                                    </div>
+                                    <div
+                                        className="p-3 rounded-2xl"
+                                        style={{
+                                            background: 'rgba(239, 68, 68, 0.12)',
+                                            border: '1px solid rgba(239, 68, 68, 0.2)',
+                                        }}
+                                    >
+                                        <SiSqlalchemy size={28} style={{ color: '#ef4444' }} />
+                                    </div>
                                 </div>
                                 <Zap size={16} style={{ color: '#10b981' }} />
                             </div>
 
-                            <h3 className="text-title mb-2" style={{ color: 'var(--text-primary)' }}>
-                                FastAPI
+                            <h3 className="text-title mb-2 flex items-center gap-2 flex-wrap" style={{ color: 'var(--text-primary)' }}>
+                                <span>FastAPI</span> <span className="text-sm font-normal text-muted-foreground">+</span> <span>SQLAlchemy 2.0</span>
                             </h3>
                             <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>
                                 {t('tech.fastapi.role')}
@@ -337,20 +348,31 @@ export default function TechStack() {
                             style={{ background: 'var(--surface)' }}
                         />
 
-                        {/* PostgreSQL Side */}
+                        {/* PostgreSQL + Prisma Side */}
                         <div className="flex-1">
-                            <div
-                                className="inline-flex p-3 rounded-2xl mb-5"
-                                style={{
-                                    background: 'rgba(37, 99, 235, 0.12)',
-                                    border: '1px solid rgba(37, 99, 235, 0.2)',
-                                }}
-                            >
-                                <SiPostgresql size={28} style={{ color: '#3b82f6' }} />
+                            <div className="flex gap-3 mb-5">
+                                <div
+                                    className="inline-flex p-3 rounded-2xl"
+                                    style={{
+                                        background: 'rgba(37, 99, 235, 0.12)',
+                                        border: '1px solid rgba(37, 99, 235, 0.2)',
+                                    }}
+                                >
+                                    <SiPostgresql size={28} style={{ color: '#3b82f6' }} />
+                                </div>
+                                <div
+                                    className="inline-flex p-3 rounded-2xl"
+                                    style={{
+                                        background: 'rgba(90, 103, 216, 0.12)',
+                                        border: '1px solid rgba(90, 103, 216, 0.2)',
+                                    }}
+                                >
+                                    <SiPrisma size={28} style={{ color: '#5a67d8' }} />
+                                </div>
                             </div>
 
-                            <h3 className="text-title mb-2" style={{ color: 'var(--text-primary)' }}>
-                                PostgreSQL
+                            <h3 className="text-title mb-2 flex items-center gap-2 flex-wrap" style={{ color: 'var(--text-primary)' }}>
+                                <span>PostgreSQL</span> <span className="text-sm font-normal text-muted-foreground">+</span> <span>Prisma ORM</span>
                             </h3>
                             <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>
                                 {t('tech.postgres.role')}
@@ -559,29 +581,26 @@ export default function TechStack() {
                             style={{ background: 'var(--surface)' }}
                         />
 
-                        {/* Prisma Side */}
+                        {/* Node.js Side */}
                         <div className="flex-1">
                             <div
                                 className="inline-flex p-3 rounded-2xl mb-5"
                                 style={{
-                                    background: 'rgba(90, 103, 216, 0.12)',
-                                    border: '1px solid rgba(90, 103, 216, 0.2)',
+                                    background: 'rgba(104, 160, 99, 0.12)',
+                                    border: '1px solid rgba(104, 160, 99, 0.2)',
                                 }}
                             >
-                                <SiPrisma size={28} style={{ color: '#5A67D8' }} />
+                                <Code2 size={28} style={{ color: '#68a063' }} />
                             </div>
 
                             <h3 className="text-title mb-2" style={{ color: 'var(--text-primary)' }}>
-                                Prisma
+                                Scalable Microservices
                             </h3>
-                            <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>
-                                {t('tech.prisma.role')}
-                            </p>
                             <p className="text-body mb-5" style={{ color: 'var(--text-secondary)' }}>
-                                {t('tech.prisma.benefit')}
+                                Decoupled event-driven scaling for high-availability systems.
                             </p>
 
-                            {/* ORM Types Visual */}
+                            {/* Node visual */}
                             <div
                                 className="rounded-xl p-4"
                                 style={{
@@ -590,25 +609,15 @@ export default function TechStack() {
                                 }}
                             >
                                 <div className="flex items-center gap-2 mb-3">
-                                    <Code2 size={12} style={{ color: '#5A67D8' }} />
+                                    <Server size={12} style={{ color: '#68a063' }} />
                                     <span className="text-[11px] font-medium" style={{ color: 'var(--text-muted)' }}>
-                                        Type-safe queries
+                                        Event mesh network
                                     </span>
                                 </div>
-                                {/* Schema Mini */}
-                                <div className="space-y-2">
-                                    <div className="text-[10px] font-mono leading-tight filter drop-shadow-sm">
-                                        <span style={{ color: '#c678dd' }}>model</span> <span style={{ color: '#e5c07b' }}>User</span> {'{'}
-                                    </div>
-                                    <div className="text-[10px] font-mono leading-tight pl-3 filter drop-shadow-sm">
-                                        <span style={{ color: '#e06c75' }}>id</span>    <span style={{ color: '#56b6c2' }}>String</span> <span style={{ color: '#c678dd' }}>@id</span>
-                                    </div>
-                                    <div className="text-[10px] font-mono leading-tight pl-3 filter drop-shadow-sm">
-                                        <span style={{ color: '#e06c75' }}>email</span> <span style={{ color: '#56b6c2' }}>String</span> <span style={{ color: '#c678dd' }}>@unique</span>
-                                    </div>
-                                    <div className="text-[10px] font-mono leading-tight filter drop-shadow-sm">
-                                        {'}'}
-                                    </div>
+                                <div className="flex justify-between items-center px-4">
+                                    <div className="w-8 h-8 rounded-full border-2 border-green-500/30 flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-green-500"></div></div>
+                                    <div className="h-0.5 flex-1 bg-green-500/20 mx-2"></div>
+                                    <div className="w-8 h-8 rounded-full border-2 border-emerald-500/30 flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-emerald-500"></div></div>
                                 </div>
                             </div>
                         </div>

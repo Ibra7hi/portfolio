@@ -36,26 +36,27 @@
 }
 
 .light {
-  --background: #f7f7f9; /* Soft, warm off-white for eye comfort */
-  --foreground: #1c1c1e; /* Extremely dark grey instead of harsh black */
+  --background: #f2f2f7; /* Apple standard system background for depth */
+  --foreground: #1c1c1e;
   
-  --accent-blue: #0066cc;
+  --accent-blue: #007aff; /* Apple Blue */
   --accent-purple: #af52de;
   --accent-cyan: #32ade6;
 
-  --surface: rgba(0, 0, 0, 0.02); /* Apple light glass */
-  --surface-hover: rgba(0, 0, 0, 0.04);
-  --border: rgba(0, 0, 0, 0.06);
-  --border-hover: rgba(0, 0, 0, 0.12);
+  /* Transparent Gray following Google & Apple design principles */
+  --surface: rgba(60, 60, 67, 0.08); /* Stronger transparent gray for glass effect */
+  --surface-hover: rgba(60, 60, 67, 0.12);
+  --border: rgba(60, 60, 67, 0.18); /* Clearer borders */
+  --border-hover: rgba(60, 60, 67, 0.28);
 
-  --text-primary: rgba(0, 0, 0, 0.9);
-  --text-secondary: rgba(0, 0, 0, 0.65);
-  --text-muted: rgba(0, 0, 0, 0.45);
+  --text-primary: rgba(0, 0, 0, 0.95);
+  --text-secondary: rgba(60, 60, 67, 0.75);
+  --text-muted: rgba(60, 60, 67, 0.5);
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.08);
-  --shadow-glow: 0 0 60px rgba(0, 102, 204, 0.08);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 60px rgba(0, 122, 255, 0.12);
 }
 
 @theme inline {
@@ -372,4 +373,14 @@ body::after {
 ::selection {
   background: rgba(59, 130, 246, 0.3);
   color: white;
+}
+
+/* --- Data Flow Animation --- */
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.animate-flow-dash {
+  animation: flow-dash 1s linear infinite;
 }
