@@ -68,6 +68,8 @@ export const translations: Record<Language, Record<string, string>> = {
         'projects.mobile.desc': 'Cross-platform mobile applications built with React Native for seamless iOS and Android experiences.',
         'projects.ecommerce.title': 'Full Stack E-commerce',
         'projects.ecommerce.desc': 'Scalable marketplace built with Next.js 16, Express.js server, and PostgreSQL database.',
+        'projects.nessim.title': 'Nessim Landing Page',
+        'projects.nessim.desc': 'A sleek and responsive landing page built with modern web technologies, focusing on clean design and user experience.',
 
         // Footer
         'footer.tagline': 'Building the future with intelligent systems & modern software.',
@@ -197,6 +199,8 @@ export const translations: Record<Language, Record<string, string>> = {
         'projects.mobile.desc': 'تطبيقات جوال متعددة المنصات مبنية بـ React Native لتجربة سلسة على iOS و Android.',
         'projects.ecommerce.title': 'منصة تجارة إلكترونية شاملة',
         'projects.ecommerce.desc': 'سوق قابل للتوسع مبني باستخدام Next.js 16، خادم Express.js، وقاعدة بيانات PostgreSQL.',
+        'projects.nessim.title': 'صفحة هبوط نسيم',
+        'projects.nessim.desc': 'صفحة هبوط أنيقة ومتجاوبة مبنية بتقنيات الويب الحديثة، تركز على التصميم النظيف وتجربة المستخدم.',
 
         // Footer
         'footer.tagline': 'بناء المستقبل بأنظمة ذكية وبرمجيات حديثة.',
