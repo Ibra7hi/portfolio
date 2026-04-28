@@ -10,8 +10,8 @@ export default function Footer() {
 
     const socialLinks = [
         { name: 'WhatsApp', icon: <FaWhatsapp size={20} />, href: 'https://api.whatsapp.com/qr/4TYXLJLDXQ6ZB1?autoload=1&app_absent=0' },
-        { name: 'LinkedIn', icon: <FaLinkedin size={20} />, href: '#' },
-        { name: 'Facebook', icon: <FaFacebook size={20} />, href: '#' }
+        { name: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'https://www.linkedin.com/in/ibrahim-adam-a50381363/?skipRedirect=true' },
+        { name: 'Facebook', icon: <FaFacebook size={20} />, href: 'https://www.facebook.com/profile.php?id=100070238168606' }
     ];
 
     const services = [
