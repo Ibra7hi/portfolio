@@ -34,6 +34,7 @@ export default function ProjectsGallery() {
     const projects = [
         {
             id: 'p1',
+            category: 'ai',
             title: t('projects.rag.title'),
             desc: t('projects.rag.desc'),
             tech: ['FastAPI', 'ChromaDB', 'LangChain'],
@@ -44,6 +45,7 @@ export default function ProjectsGallery() {
         },
         {
             id: 'p2',
+            category: 'ai',
             title: t('projects.agent.title'),
             desc: t('projects.agent.desc'),
             tech: ['LangChain', 'Next.js'],
@@ -53,15 +55,18 @@ export default function ProjectsGallery() {
         },
         {
             id: 'p3',
+            category: 'se',
             title: t('projects.mobile.title'),
             desc: t('projects.mobile.desc'),
             tech: ['React Native', 'Expo'],
             size: 'lg:col-span-1',
             icon: <Smartphone size={22} />,
-            accent: 'cyan'
+            accent: 'cyan',
+            link: 'https://github.com/Ibra7hi/nabd-libya'
         },
         {
             id: 'p4',
+            category: 'se',
             title: t('projects.nessim.title'),
             desc: t('projects.nessim.desc'),
             tech: ['HTML', 'CSS', 'JavaScript'],
@@ -72,10 +77,29 @@ export default function ProjectsGallery() {
         },
     ];
 
+    const groupedProjects = [
+        {
+            id: 'ai',
+            title: t('projects.category.ai'),
+            icon: <Bot className="w-6 h-6 text-blue-500" />,
+            bgColor: 'bg-blue-500/10',
+            borderColor: 'border-blue-500/20',
+            items: projects.filter(p => p.category === 'ai')
+        },
+        {
+            id: 'se',
+            title: t('projects.category.se'),
+            icon: <Smartphone className="w-6 h-6 text-purple-500" />,
+            bgColor: 'bg-purple-500/10',
+            borderColor: 'border-purple-500/20',
+            items: projects.filter(p => p.category === 'se')
+        }
+    ];
+
     return (
         <div className="w-full max-w-6xl px-4 flex flex-col items-center">
             {/* Section Header */}
-            <div className="mb-10 w-full">
+            <div className="mb-14 w-full">
                 <motion.h2
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -98,116 +122,139 @@ export default function ProjectsGallery() {
                 </motion.p>
             </div>
 
-            {/* Projects Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                {projects.map((project, index) => {
-                    const colors = accentColors[project.accent as keyof typeof accentColors];
-
-                    return (
-                        <motion.article
-                            key={project.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+            {/* Projects Categorized */}
+            <div className="w-full flex flex-col gap-16">
+                {groupedProjects.map((group) => (
+                    <div key={group.id} className="w-full">
+                        {/* Category Header */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className={cn(
-                                "group cursor-pointer",
-                                project.size
-                            )}
+                            transition={{ duration: 0.5 }}
+                            className="flex items-center gap-4 mb-8"
                         >
-                            <a 
-                                href={project.link} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="block h-full w-full"
-                                onClick={(e) => !project.link && e.preventDefault()}
-                            >
-                                <SpotlightCard 
-                                    className="glass-card p-8 h-full flex flex-col items-start relative overflow-hidden"
-                                    spotlightColor={colors.glow}
-                                >
-                                    {/* Subtle Ambient Glow on Hover */}
-                                    <div 
-                                        className="absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                                        style={{ background: colors.glow }}
-                                    />
+                            <div className={cn("p-3 rounded-xl border", group.bgColor, group.borderColor)}>
+                                {group.icon}
+                            </div>
+                            <h3 className="text-2xl font-bold tracking-tight" style={{ color: 'var(--text-primary)' }}>
+                                {group.title}
+                            </h3>
+                        </motion.div>
 
-                                    {/* Visual Header */}
-                                    <div className="flex justify-between items-start mb-8 w-full relative z-10">
-                                        {project.id === 'p1' ? (
-                                            <div className="w-full h-32 relative rounded-xl overflow-hidden mb-2" style={{ background: 'var(--surface-hover)', border: `1px solid ${colors.border}` }}>
-                                                {/* Abstract RAG Search UI */}
-                                                <div className="absolute inset-4 flex flex-col gap-2">
-                                                    {/* Query */}
-                                                    <div className="w-2/3 h-2.5 rounded-full bg-blue-500/20" />
-                                                    {/* Vector Search Results */}
-                                                    <div className="w-full h-2 rounded-full bg-blue-500/10 mt-2" />
-                                                    <div className="w-4/5 h-2 rounded-full bg-blue-500/10" />
-                                                    <div className="w-5/6 h-2 rounded-full bg-blue-500/10" />
-                                                    
-                                                    {/* Highlighted extraction */}
-                                                    <motion.div 
-                                                        className="w-1/2 h-2.5 rounded-full mt-2"
-                                                        style={{ background: 'linear-gradient(90deg, #3b82f6, #60a5fa)' }}
-                                                        initial={{ opacity: 0.5 }}
-                                                        animate={{ opacity: [0.5, 1, 0.5] }}
-                                                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                                                    />
-                                                </div>
-                                            </div>
-                                        ) : (
-                                            <div
-                                                className="p-3.5 rounded-2xl transition-transform duration-300 group-hover:scale-105"
-                                                style={{
-                                                    backgroundColor: colors.bg,
-                                                    border: `1px solid ${colors.border}`
-                                                }}
+                        {/* Category Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+                            {group.items.map((project, index) => {
+                                const colors = accentColors[project.accent as keyof typeof accentColors];
+
+                                return (
+                                    <motion.article
+                                        key={project.id}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+                                        viewport={{ once: true }}
+                                        className={cn(
+                                            "group cursor-pointer",
+                                            project.size
+                                        )}
+                                    >
+                                        <a 
+                                            href={project.link} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            className="block h-full w-full"
+                                            onClick={(e) => !project.link && e.preventDefault()}
+                                        >
+                                            <SpotlightCard 
+                                                className="glass-card p-8 h-full flex flex-col items-start relative overflow-hidden"
+                                                spotlightColor={colors.glow}
                                             >
-                                                <span style={{ color: colors.text }}>{project.icon}</span>
-                                            </div>
-                                        )}
-
-                                        {(project.id !== 'p1' || project.link) && (
-                                            <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/[0.03] border border-white/5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                                                <ArrowUpRight
-                                                    size={16}
-                                                    style={{ color: 'var(--text-primary)' }}
+                                                {/* Subtle Ambient Glow on Hover */}
+                                                <div 
+                                                    className="absolute -top-24 -right-24 w-48 h-48 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                                                    style={{ background: colors.glow }}
                                                 />
-                                            </div>
-                                        )}
-                                    </div>
 
-                                    {/* Content */}
-                                    <div className="relative z-10 mt-auto w-full">
-                                        <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-400" style={{ color: 'var(--text-primary)' }}>
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
-                                            {project.desc}
-                                        </p>
+                                                {/* Visual Header */}
+                                                <div className="flex justify-between items-start mb-8 w-full relative z-10">
+                                                    {project.id === 'p1' ? (
+                                                        <div className="w-full h-32 relative rounded-xl overflow-hidden mb-2" style={{ background: 'var(--surface-hover)', border: `1px solid ${colors.border}` }}>
+                                                            {/* Abstract RAG Search UI */}
+                                                            <div className="absolute inset-4 flex flex-col gap-2">
+                                                                {/* Query */}
+                                                                <div className="w-2/3 h-2.5 rounded-full bg-blue-500/20" />
+                                                                {/* Vector Search Results */}
+                                                                <div className="w-full h-2 rounded-full bg-blue-500/10 mt-2" />
+                                                                <div className="w-4/5 h-2 rounded-full bg-blue-500/10" />
+                                                                <div className="w-5/6 h-2 rounded-full bg-blue-500/10" />
+                                                                
+                                                                {/* Highlighted extraction */}
+                                                                <motion.div 
+                                                                    className="w-1/2 h-2.5 rounded-full mt-2"
+                                                                    style={{ background: 'linear-gradient(90deg, #3b82f6, #60a5fa)' }}
+                                                                    initial={{ opacity: 0.5 }}
+                                                                    animate={{ opacity: [0.5, 1, 0.5] }}
+                                                                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    ) : (
+                                                        <div
+                                                            className="p-3.5 rounded-2xl transition-transform duration-300 group-hover:scale-105"
+                                                            style={{
+                                                                backgroundColor: colors.bg,
+                                                                border: `1px solid ${colors.border}`
+                                                            }}
+                                                        >
+                                                            <span style={{ color: colors.text }}>{project.icon}</span>
+                                                        </div>
+                                                    )}
 
-                                        {/* Tags */}
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.tech.map(t => (
-                                                <span
-                                                    key={t}
-                                                    className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide"
-                                                    style={{
-                                                        backgroundColor: 'var(--surface)',
-                                                        border: '1px solid var(--border)',
-                                                        color: 'var(--text-muted)'
-                                                    }}
-                                                >
-                                                    {t}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </SpotlightCard>
-                            </a>
-                        </motion.article>
-                    );
-                })}
+                                                    {(project.id !== 'p1' || project.link) && (
+                                                        <div className="w-8 h-8 rounded-full flex items-center justify-center bg-white/[0.03] border border-white/5 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                                                            <ArrowUpRight
+                                                                size={16}
+                                                                style={{ color: 'var(--text-primary)' }}
+                                                            />
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                {/* Content */}
+                                                <div className="relative z-10 mt-auto w-full">
+                                                    <h3 className="text-xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-400" style={{ color: 'var(--text-primary)' }}>
+                                                        {project.title}
+                                                    </h3>
+                                                    <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>
+                                                        {project.desc}
+                                                    </p>
+
+                                                    {/* Tags */}
+                                                    <div className="flex flex-wrap gap-2">
+                                                        {project.tech.map(t => (
+                                                            <span
+                                                                key={t}
+                                                                className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide"
+                                                                style={{
+                                                                    backgroundColor: 'var(--surface)',
+                                                                    border: '1px solid var(--border)',
+                                                                    color: 'var(--text-muted)'
+                                                                }}
+                                                            >
+                                                                {t}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </SpotlightCard>
+                                        </a>
+                                    </motion.article>
+                                );
+                            })}
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

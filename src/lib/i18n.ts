@@ -60,6 +60,8 @@ export const translations: Record<Language, Record<string, string>> = {
         // Projects
         'projects.headline': 'Featured Projects',
         'projects.description': 'A collection of intelligent systems built with precision and care',
+        'projects.category.ai': 'AI Engineering',
+        'projects.category.se': 'Software Engineering',
         'projects.rag.title': 'Advanced RAG System',
         'projects.rag.desc': 'Intelligent search engine that analyzes thousands of documents in seconds using ChromaDB and advanced embedding techniques.',
         'projects.agent.title': 'Autonomous AI Agent',
@@ -191,6 +193,8 @@ export const translations: Record<Language, Record<string, string>> = {
         // Projects
         'projects.headline': 'المشاريع المميزة',
         'projects.description': 'مجموعة من الأنظمة الذكية التي تم بناؤها بدقة عالية',
+        'projects.category.ai': 'هندسة الذكاء الاصطناعي',
+        'projects.category.se': 'هندسة البرمجيات',
         'projects.rag.title': 'نظام RAG متطور',
         'projects.rag.desc': 'محرك بحث ذكي يحلل آلاف الوثائق في ثوانٍ باستخدام ChromaDB وتقنيات Embedding المتقدمة.',
         'projects.agent.title': 'وكيل ذكاء اصطناعي مستقل',

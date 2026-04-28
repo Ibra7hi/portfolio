@@ -2,14 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { useLanguage } from './LanguageProvider';
 
 export default function Footer() {
     const { t } = useLanguage();
 
     const socialLinks = [
-        { name: 'WhatsApp', icon: <FaWhatsapp size={20} />, href: 'https://api.whatsapp.com/qr/4TYXLJLDXQ6ZB1?autoload=1&app_absent=0' }
+        { name: 'WhatsApp', icon: <FaWhatsapp size={20} />, href: 'https://api.whatsapp.com/qr/4TYXLJLDXQ6ZB1?autoload=1&app_absent=0' },
+        { name: 'LinkedIn', icon: <FaLinkedin size={20} />, href: '#' },
+        { name: 'Facebook', icon: <FaFacebook size={20} />, href: '#' }
     ];
 
     const services = [
