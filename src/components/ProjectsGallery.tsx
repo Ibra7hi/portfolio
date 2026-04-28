@@ -68,7 +68,7 @@ export default function ProjectsGallery() {
             size: 'lg:col-span-2',
             icon: <ArrowUpRight size={22} />,
             accent: 'purple',
-            link: 'https://github.com/Ibra7hi/nessimlandingpage'
+            link: 'https://nessimlandingpage-two.vercel.app/'
         },
     ];
 
